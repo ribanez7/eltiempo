@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'optparse'
+require 'eltiempo'
+
+optparser = OptionParser.new
+arguments = optparser.parse!
+usage     = <<EOS
+Please provide client name as the first argument, then the file to import the data from.
+EOS
+
+client = arguments.shift
+file = arguments.shift
+
+unless client && file
+  STDERR.puts(usage)
+  exit 1
+end
+
+# Import::Import.call(client, file)
