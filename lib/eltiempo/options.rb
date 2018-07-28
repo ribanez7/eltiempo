@@ -21,15 +21,7 @@ module Eltiempo
         protected :"#{name}="
       end
 
-      attr_writer :default_start, :default_until
-
-      def default_until
-        @default_until
-      end
-
-      def default_start
-        @default_start
-      end
+      attr_accessor :default_start, :default_until
 
       def merge(opts = {})
         new(default_options).merge(opts)
@@ -37,8 +29,8 @@ module Eltiempo
 
       def default_options
         {
-          start: default_start,
-          until: default_until,
+          start:     default_start,
+          until:     default_until,
           operation: :general
         }
       end
@@ -53,7 +45,7 @@ module Eltiempo
       defaults = {
         municipality: nil,
         start:        nil,
-        until:        nil,
+        until:        nil
       }
 
       options = defaults.merge(opts || {})
