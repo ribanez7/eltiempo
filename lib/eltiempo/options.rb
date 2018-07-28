@@ -37,6 +37,7 @@ module Eltiempo
     end
 
     def_option :municipality
+    def_option :operation
     def_option :start
     def_option :until
     def_option :between
@@ -44,8 +45,9 @@ module Eltiempo
     def initialize(opts = {})
       defaults = {
         municipality: nil,
-        start:        nil,
-        until:        nil
+        start:        default_start,
+        until:        default_until,
+        operation:    :general
       }
 
       options = defaults.merge(opts || {})

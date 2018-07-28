@@ -36,3 +36,4 @@ EOS
 
 # Eltiempo.reporter(options)
 puts options.inspect
+puts Eltiempo.reporter(options).inspect

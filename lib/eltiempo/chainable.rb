@@ -8,13 +8,13 @@ module Eltiempo
     # Eltiempo.today.municipality('Gavà')
     # Eltiempo.average_maximum.municipality('Gavà')
     # Eltiempo.average_minimum.municipality('Gavà')
-    # Eltiempo.average_maximum.current_week.municipality('Gavà')
+    # Eltiempo.municipality('Gavà')
     #
     # This methods will branch or merge the options to use.
     #
 
     def today
-      branch default_options.merge(operation: :general)
+      branch default_options
     end
 
     def average_maximum

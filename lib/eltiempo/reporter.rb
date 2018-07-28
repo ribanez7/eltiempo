@@ -11,9 +11,9 @@ module Eltiempo
     include Chainable
 
     attr_reader :default_options
-    def_delegator :@default_options, :start
-    def_delegator :@default_options, :until
-    def_delegator :@default_options, :operation
+    # def_delegator :@default_options, :start
+    # def_delegator :@default_options, :until
+    # def_delegator :@default_options, :operation
 
     class << self
       def new(options = {})
