@@ -39,4 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-reporters", "~> 1.1"
 
   spec.add_dependency 'http'
+  spec.add_dependency 'ox'
+  spec.add_dependency "activesupport", ">= 4.1", "< 5.3"
 end

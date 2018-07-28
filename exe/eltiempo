@@ -3,18 +3,35 @@ require 'bundler/setup'
 require 'optparse'
 require 'eltiempo'
 
-optparser = OptionParser.new
-arguments = optparser.parse!
-usage     = <<EOS
-Please provide client name as the first argument, then the file to import the data from.
-EOS
+options = {}
+optparser = OptionParser.new do |opts|
+  opts.on("--today PLACE") do |place|
+    options[:day] = Date.today
+    options[:municipality] = place
+    options[:operation] = :general
+  end
 
-client = arguments.shift
-file = arguments.shift
+  opts.on("--av_max PLACE") do |place|
+    options[:start] = Date.today.beginning_of_week
+    options[:until] = Date.today.end_of_week
+    options[:municipality] = place
+    options[:operation] = :max
+  end
 
-unless client && file
-  STDERR.puts(usage)
-  exit 1
+  opts.on("--av_min PLACE") do |place|
+    options[:start] = Date.today.beginning_of_week
+    options[:until] = Date.today.end_of_week
+    options[:municipality] = place
+    options[:operation] = :min
+  end
 end
 
-# Import::Import.call(client, file)
+optparser.parse!
+usage     = <<EOS
+Please provide...
+EOS
+# STDERR.puts(usage)
+# exit 1
+
+# Eltiempo.reporter(options)
+puts options.inspect
