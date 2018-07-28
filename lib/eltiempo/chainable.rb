@@ -1,10 +1,7 @@
 require 'eltiempo/options'
-require 'eltiempo/refinements/array_concat'
 
 module Eltiempo
   module Chainable
-    using Eltiempo::Refinements::ArrayConcat
-
     # TODO: define here the gem api:
     #
     # Eltiempo.municipality('Gavà').today
@@ -14,8 +11,39 @@ module Eltiempo
     # Eltiempo.average_maximum.current_week.municipality('Gavà')
     #
     # This methods will branch or merge the options to use.
-    # The array_concat refinement will allow us to sum days.
     #
+
+    def today
+      branch default_options.merge(operation: :general)
+    end
+
+    def average_maximum
+      branch default_options.merge(operation: :max)
+    end
+
+    def average_minimum
+      branch default_options.merge(operation: :min)
+    end
+
+    def municipality(place)
+      merge(municipality: place)
+    end
+
+    def operation(operation)
+      merge(operation: operation)
+    end
+
+    def start(dtstart)
+      merge(start: ::Eltiempo::Utils.as_date(dtstart))
+    end
+
+    def until(dtend)
+      merge(until: ::Eltiempo::Utils.as_date(dtend))
+    end
+
+    def between(range)
+      merge(between: range)
+    end
 
     def merge(other = {})
       branch default_options.merge(other)

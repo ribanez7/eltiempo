@@ -11,8 +11,8 @@ module Eltiempo
 
     def initialize
       @params = {
-        api_lang: :es,
-        division: 102,
+        api_lang:     :es,
+        division:     102,
         affiliate_id: :zdo2c683olan
       }
     end
@@ -20,15 +20,16 @@ module Eltiempo
     def get_place(place)
       xml = HTTP.get(CLIENT, params: params).to_s
       xml_object = Ox.load(xml, mode: :hash_no_attrs)
-      place_hash = xml_object.dig(*BASE_PLACE_PATH)
-                             .find do |city|
-                               city[:name].match?(/\A#{place}\z/i)
-                             end
+      place_hash = Array(xml_object.dig(*BASE_PLACE_PATH)).find do |city|
+        city[:name].match?(/\A#{place}\z/i)
+      end
+      raise StandardError unless place_hash
       municipality = URI.decode_www_form(
         URI.parse(place_hash[:url]).query
       ).to_h['localidad']
 
       @params = params.merge(localidad: municipality)
+      self
     end
   end
 end

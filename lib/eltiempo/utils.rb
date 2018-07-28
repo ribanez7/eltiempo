@@ -33,12 +33,8 @@ module Eltiempo
       ::Time.zone.nil? ? ::Time.parse(*args) : ::Time.zone.parse(*args)
     end
 
-    def current_time
-      ::Time.current
-    end
-
-    def normalize_time(time)
-      time && time.change(usec: 0)
+    def current_day
+      as_date(::Time.current)
     end
   end
 end

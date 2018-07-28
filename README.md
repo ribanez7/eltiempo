@@ -1,5 +1,9 @@
 # Eltiempo
 
+Before checking the api client, I thought that week predictions should take from monday to sunday of the current week. That's why I focused on how to deal with the proper dates, using active_support date utils and passing start and until dates. After that, I realised that the api we are using doesn't allow this kind of operations, and that for the week predictions you have to think on today plus 7 days. So from commit 0e961dc, anything has been reduced to the only possible actions we get from tiempo.com.
+
+
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/eltiempo`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem

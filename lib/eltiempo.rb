@@ -12,7 +12,6 @@ require 'eltiempo/version'
 
 module Eltiempo
   extend Chainable
-  # Your code goes here...
 
   class << self
     # Create a new reporter from given options

@@ -6,28 +6,29 @@ require 'eltiempo'
 options = {}
 optparser = OptionParser.new do |opts|
   opts.on("--today PLACE") do |place|
-    options[:day] = Date.today
+    options[:start] = Date.today
+    options[:until] = Date.today
     options[:municipality] = place
     options[:operation] = :general
   end
 
   opts.on("--av_max PLACE") do |place|
-    options[:start] = Date.today.beginning_of_week
-    options[:until] = Date.today.end_of_week
+    options[:start] = Date.today
+    options[:until] = Date.today + 6.days
     options[:municipality] = place
     options[:operation] = :max
   end
 
   opts.on("--av_min PLACE") do |place|
-    options[:start] = Date.today.beginning_of_week
-    options[:until] = Date.today.end_of_week
+    options[:start] = Date.today
+    options[:until] = Date.today + 6.days
     options[:municipality] = place
     options[:operation] = :min
   end
 end
 
 optparser.parse!
-usage     = <<EOS
+usage = <<EOS
 Please provide...
 EOS
 # STDERR.puts(usage)
