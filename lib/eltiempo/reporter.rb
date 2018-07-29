@@ -1,6 +1,5 @@
 require 'ox'
 require 'json'
-require 'yaml'
 require 'eltiempo/http_client'
 require 'eltiempo/chainable'
 require 'eltiempo/errors'
@@ -10,10 +9,7 @@ module Eltiempo
     extend Forwardable
     include Chainable
 
-    attr_reader :default_options
-    # def_delegator :@default_options, :start
-    # def_delegator :@default_options, :until
-    # def_delegator :@default_options, :operation
+    attr_reader :default_options, :data_persisted
 
     class << self
       def new(options = {})
@@ -31,6 +27,16 @@ module Eltiempo
 
     def initialize(opts = {})
       @default_options = Eltiempo::Options.new(opts)
+      @data_persisted  = false
+    end
+
+    def dump
+      grab_data unless data_persisted
+      self.class.dump(self)
+    end
+
+    def grab_data
+      return unless @default_options[:municipality]
     end
 
     # Returns a hash of the options used to create the reporter
@@ -41,21 +47,5 @@ module Eltiempo
       default_options.to_hash
     end
     alias to_h to_hash
-
-    # Returns json string of options used to create the reporter
-    #
-    # @return [String] json of reporter options
-    #
-    def to_json(*args)
-      JSON.dump(to_hash, *args)
-    end
-
-    # Returns options used to create the reporter in YAML format
-    #
-    # @return [String] YAML-formatted reporter options
-    #
-    def to_yaml(*args)
-      YAML.dump(JSON.parse(to_json(*args)))
-    end
   end
 end
