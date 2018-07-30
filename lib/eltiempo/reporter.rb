@@ -1,5 +1,4 @@
 require 'ox'
-require 'json'
 require 'observer'
 require 'eltiempo/observers/options_observer'
 require 'eltiempo/http_client'

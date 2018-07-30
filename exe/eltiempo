@@ -28,10 +28,5 @@ optparser = OptionParser.new do |opts|
 end
 
 optparser.parse!
-usage = <<EOS
-Please provide...
-EOS
-# STDERR.puts(usage)
-# exit 1
 
 Eltiempo.reporter(options)

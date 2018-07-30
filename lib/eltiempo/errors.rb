@@ -1,8 +1,4 @@
 module Eltiempo
-  Error = Class.new(StandardError)
-  ConfigurationError = Class.new(Error)
-  SerializationError = Class.new(Error)
-
   class PlaceMissingError < StandardError
     MSG = <<~ERR.freeze
       Place needed, please execute the place() method

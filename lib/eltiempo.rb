@@ -17,6 +17,8 @@ module Eltiempo
   class << self
     # Create a new reporter from given options
     # An alias to {Eltiempo::Reporter.new}
+    # it prints to STDOUT the results if all the
+    # needed options are provided.
     #
     # @param options [Hash] reporting options
     #
