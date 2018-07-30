@@ -34,6 +34,4 @@ EOS
 # STDERR.puts(usage)
 # exit 1
 
-# Eltiempo.reporter(options)
-puts options.inspect
-puts Eltiempo.reporter(options).inspect
+Eltiempo.reporter(options)
