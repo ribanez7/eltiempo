@@ -26,25 +26,35 @@ There's also a utils module for the easy of time calculations. I have to say tha
 
 Before checking the api client, I thought that week predictions should take from monday to sunday of the current week. That's why I focused on how to deal with the proper dates, using active_support date utils and passing start and until dates. After that, I realised that the api we are using doesn't allow this kind of operations, and that for the week predictions you have to think on today plus 7 days. So from commit 0e961dc, anything has been reduced to the only possible actions we get from tiempo.com. For the same reason, I have enabled the options start, until, and between, just in case an enhancement is needed.
 
-## Installation
+## Installation and usage
 
-Add this line to your application's Gemfile:
+You can clone the repository and execute these commands from the root directory:
 
-```ruby
-gem 'eltiempo'
+```bash
+bunlde install
+rake build
+gem install --local ./pkg/*.gem
 ```
 
-And then execute:
+And then execute the script:
 
-    $ bundle
+    $ eltiempo --today Terrassa
+    $ eltiempo --av_max Sabadell
+    $ eltiempo --av_min Sallent
 
-Or install it yourself as:
+You can also execute the script without installing the gem:
 
-    $ gem install eltiempo
+```bash
+cd import
+bundle install
+exe/eltiempo --av_min Sallent
+```
 
-## Usage
+## Things TODO:
 
-TODO: Write usage instructions here
+1. Help command.
+2. More detailed errors
+3. API documentation
 
 ## Development
 
