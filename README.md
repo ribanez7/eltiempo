@@ -55,6 +55,7 @@ exe/eltiempo --av_min Sallent
 1. Help command.
 2. More detailed errors
 3. API documentation
+4. Encripted credentials, or via ENV.
 
 ## Development
 
