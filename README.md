@@ -24,7 +24,7 @@ And last, the calculations object. Here there's also a refinement of the Array c
 
 There's also a utils module for the easy of time calculations. I have to say that the purpose of that is just to be able to scale this cli playing with more complex dates. That's also the reason I have included active_support parts regarding time calculations, since it has a very handy abstraction of date and time objects. But for the moment, it is not needed.
 
-Before checking the api client, I thought that week predictions should take from monday to sunday of the current week. That's why I focused on how to deal with the proper dates, using active_support date utils and passing start and until dates. After that, I realised that the api we are using doesn't allow this kind of operations, and that for the week predictions you have to think on today plus 7 days. So from commit 0e961dc, anything has been reduced to the only possible actions we get from tiempo.com. For the same reason, I have enabled the options start, until, and between, just in case an enhancement is needed.
+I suppose that week predictions should take any real value available on the api.tiempo.com site. That's why I focused on how to deal with proper dates, using active_support date utils and passing :start and :until options. I realised that the api we are using doesn't allow this kind of operations, but I have enabled them (start, until, and between), just in case an enhancement is needed.
 
 ## Installation and usage
 
