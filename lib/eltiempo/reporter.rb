@@ -1,6 +1,6 @@
 require 'ox'
 require 'observer'
-require 'eltiempo/observers/options_observer'
+require 'eltiempo/observers/results_reporter'
 require 'eltiempo/http_client'
 require 'eltiempo/chainable'
 require 'eltiempo/errors'
@@ -24,28 +24,6 @@ module Eltiempo
       general: {command: :today, message: 'today'}
     }.freeze
 
-    class ResultsReporter < Eltiempo::Observers::OptionsObserver
-      def update(reporter)
-        options = reporter.default_options
-        return unless validates?(options)
-
-        reporter.place(options[:municipality])
-        reporter.calculations = Eltiempo::Calculations.new(reporter.metrics.to_s)
-        reporter.dump
-      end
-
-      private
-
-        def validates?(options)
-          [
-            options[:start],
-            options[:until],
-            options[:municipality],
-            options[:operation]
-          ].all?
-        end
-    end
-
     class << self
       def new(options = {})
         return options if options.is_a?(self)
@@ -54,7 +32,7 @@ module Eltiempo
     end
 
     def initialize(opts = {})
-      ResultsReporter.new(self)
+      Observers::ResultsReporter.new(self)
       @default_options = Eltiempo::Options.new(opts)
       @data = Eltiempo::HttpClient.new
       changed
