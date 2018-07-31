@@ -13,7 +13,6 @@ module Eltiempo
     attr_reader :default_options, :data
     attr_accessor :calculations
 
-    def_delegators :@default_options, :operation
     def_delegators :@calculations, :today, :av_max, :av_min
     def_delegators :@data, :place, :metrics
 
@@ -39,7 +38,7 @@ module Eltiempo
     end
 
     def dump
-      action = REPORTS[operation]
+      action = REPORTS[@default_options[:operation]]
       output = <<~OUTPUT
         Results for #{@default_options[:municipality]}, #{action[:message]}:
         #{self.send(action[:command])}
