@@ -1,4 +1,3 @@
-require 'ox'
 require 'observer'
 require 'eltiempo/observers/results_reporter'
 require 'eltiempo/http_client'
