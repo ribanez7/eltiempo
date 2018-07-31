@@ -87,8 +87,8 @@ module Eltiempo
 
     def between=(range)
       @between = range
-      self[:start] = range.first unless self[:start]
-      self[:until] = range.last unless self[:until]
+      self[:start] = range.first
+      self[:until] = range.last
     end
 
     def municipality=(place)

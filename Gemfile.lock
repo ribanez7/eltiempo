@@ -48,6 +48,7 @@ GEM
     rake (10.5.0)
     ruby-progressbar (1.9.0)
     thread_safe (0.3.6)
+    timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -64,6 +65,7 @@ DEPENDENCIES
   minitest-reporters (~> 1.1)
   pry
   rake (~> 10.0)
+  timecop
 
 BUNDLED WITH
    1.16.2
