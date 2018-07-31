@@ -1,11 +1,10 @@
 require 'test_helper'
-require 'eltiempo/refinements/average'
 
 module Eltiempo
   module Refinements
     class AverageTest < Minitest::Test
       class Dummy
-        using ::Eltiempo::Refinements::Average
+        using Average
 
         def integers_average
           [1, 2, 3, 4, 5].average

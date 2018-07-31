@@ -1,11 +1,10 @@
 require 'test_helper'
-require 'eltiempo/refinements/query_param_find'
 
 module Eltiempo
   module Refinements
     class QueryParamFindTest < Minitest::Test
       class Dummy
-        using ::Eltiempo::Refinements::QueryParamFind
+        using QueryParamFind
 
         def url_from_google
           <<~EOS.delete("\n")

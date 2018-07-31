@@ -13,6 +13,7 @@ module Eltiempo
     attr_accessor :municipality, :params
 
     def initialize
+      @places = nil
       @params = {
         api_lang:     :es,
         division:     102,
