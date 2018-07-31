@@ -2,17 +2,6 @@ require 'eltiempo/options'
 
 module Eltiempo
   module Chainable
-    # TODO: define here the gem api:
-    #
-    # Eltiempo.municipality('Gavà').today
-    # Eltiempo.today.municipality('Gavà')
-    # Eltiempo.average_maximum.municipality('Gavà')
-    # Eltiempo.average_minimum.municipality('Gavà')
-    # Eltiempo.municipality('Gavà')
-    #
-    # This methods will branch or merge the options to use.
-    #
-
     def today
       branch default_options
     end
